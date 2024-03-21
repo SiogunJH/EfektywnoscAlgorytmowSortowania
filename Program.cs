@@ -19,58 +19,73 @@ namespace Program
     {
         [Params(10, 1000, 100000)]
         public int arrSize;
+        public int[] arrRand = new int[0];
+        public int[] arrSort = new int[0];
+        public int[] arrRev = new int[0];
+        public int[] arrPart = new int[0];
+        public int[] arrFew = new int[0];
+
+        [GlobalSetup]
+        public void Setup()
+        {
+            arrRand = ArrayGenerator.GetRandomArray(arrSize, 0, arrSize);
+            arrSort = ArrayGenerator.GetSortedArray(arrSize, 0, arrSize);
+            arrRev = ArrayGenerator.GetReversedArray(arrSize, 0, arrSize);
+            arrPart = ArrayGenerator.GetPartiallySortedArray(arrSize, 0, arrSize, 0.1f);
+            arrFew = ArrayGenerator.GetRandomArray(arrSize, 0, arrSize / 5);
+        }
 
         // INSERTION
 
         [Benchmark]
-        public void InsertionSort_Random() { SortingAlgorithms.InsertionSort(ArrayGenerator.GetRandomArray(arrSize, 0, arrSize)); }
+        public void InsertionSort_Random() { SortingAlgorithms.InsertionSort((int[])arrRand.Clone()); }
         [Benchmark]
-        public void InsertionSort_Sorted() { SortingAlgorithms.InsertionSort(ArrayGenerator.GetSortedArray(arrSize, 0, arrSize)); }
+        public void InsertionSort_Sorted() { SortingAlgorithms.InsertionSort((int[])arrSort.Clone()); }
         [Benchmark]
-        public void InsertionSort_Reversed() { SortingAlgorithms.InsertionSort(ArrayGenerator.GetReversedArray(arrSize, 0, arrSize)); }
+        public void InsertionSort_Reversed() { SortingAlgorithms.InsertionSort((int[])arrRev.Clone()); }
         [Benchmark]
-        public void InsertionSort_Almost() { SortingAlgorithms.InsertionSort(ArrayGenerator.GetPartiallySortedArray(arrSize, 0, arrSize, 0.1f)); }
+        public void InsertionSort_Almost() { SortingAlgorithms.InsertionSort((int[])arrPart.Clone()); }
         [Benchmark]
-        public void InsertionSort_FewUnique() { SortingAlgorithms.InsertionSort(ArrayGenerator.GetRandomArray(arrSize, 0, 5)); }
+        public void InsertionSort_FewUnique() { SortingAlgorithms.InsertionSort((int[])arrFew.Clone()); }
 
         // MERGE
 
         [Benchmark]
-        public void MergeSort_Random() { SortingAlgorithms.MergeSort(ArrayGenerator.GetRandomArray(arrSize, 0, arrSize)); }
+        public void MergeSort_Random() { SortingAlgorithms.MergeSort((int[])arrRand.Clone()); }
         [Benchmark]
-        public void MergeSort_Sorted() { SortingAlgorithms.MergeSort(ArrayGenerator.GetSortedArray(arrSize, 0, arrSize)); }
+        public void MergeSort_Sorted() { SortingAlgorithms.MergeSort((int[])arrSort.Clone()); }
         [Benchmark]
-        public void MergeSort_Reversed() { SortingAlgorithms.MergeSort(ArrayGenerator.GetReversedArray(arrSize, 0, arrSize)); }
+        public void MergeSort_Reversed() { SortingAlgorithms.MergeSort((int[])arrRev.Clone()); }
         [Benchmark]
-        public void MergeSort_Almost() { SortingAlgorithms.MergeSort(ArrayGenerator.GetPartiallySortedArray(arrSize, 0, arrSize, 0.1f)); }
+        public void MergeSort_Almost() { SortingAlgorithms.MergeSort((int[])arrPart.Clone()); }
         [Benchmark]
-        public void MergeSort_FewUnique() { SortingAlgorithms.MergeSort(ArrayGenerator.GetRandomArray(arrSize, 0, 5)); }
+        public void MergeSort_FewUnique() { SortingAlgorithms.MergeSort((int[])arrFew.Clone()); }
 
         // QUICK CLASSICAL
 
         [Benchmark]
-        public void QuickClassicalSort_Random() { SortingAlgorithms.QuickSortClassical(ArrayGenerator.GetRandomArray(arrSize, 0, arrSize)); }
+        public void QuickClassicalSort_Random() { SortingAlgorithms.QuickSortClassical((int[])arrRand.Clone()); }
         [Benchmark]
-        public void QuickClassicalSort_Sorted() { SortingAlgorithms.QuickSortClassical(ArrayGenerator.GetSortedArray(arrSize, 0, arrSize)); }
+        public void QuickClassicalSort_Sorted() { SortingAlgorithms.QuickSortClassical((int[])arrSort.Clone()); }
         [Benchmark]
-        public void QuickClassicalSort_Reversed() { SortingAlgorithms.QuickSortClassical(ArrayGenerator.GetReversedArray(arrSize, 0, arrSize)); }
+        public void QuickClassicalSort_Reversed() { SortingAlgorithms.QuickSortClassical((int[])arrRev.Clone()); }
         [Benchmark]
-        public void QuickClassicalSort_Almost() { SortingAlgorithms.QuickSortClassical(ArrayGenerator.GetPartiallySortedArray(arrSize, 0, arrSize, 0.1f)); }
+        public void QuickClassicalSort_Almost() { SortingAlgorithms.QuickSortClassical((int[])arrPart.Clone()); }
         [Benchmark]
-        public void QuickClassicalSort_FewUnique() { SortingAlgorithms.QuickSortClassical(ArrayGenerator.GetRandomArray(arrSize, 0, 5)); }
+        public void QuickClassicalSort_FewUnique() { SortingAlgorithms.QuickSortClassical((int[])arrFew.Clone()); }
 
         // QUICK
 
         [Benchmark]
-        public void QuickSort_Random() { SortingAlgorithms.QuickSort(ArrayGenerator.GetRandomArray(arrSize, 0, arrSize)); }
+        public void QuickSort_Random() { SortingAlgorithms.QuickSort((int[])arrRand.Clone()); }
         [Benchmark]
-        public void QuickSort_Sorted() { SortingAlgorithms.QuickSort(ArrayGenerator.GetSortedArray(arrSize, 0, arrSize)); }
+        public void QuickSort_Sorted() { SortingAlgorithms.QuickSort((int[])arrSort.Clone()); }
         [Benchmark]
-        public void QuickSort_Reversed() { SortingAlgorithms.QuickSort(ArrayGenerator.GetReversedArray(arrSize, 0, arrSize)); }
+        public void QuickSort_Reversed() { SortingAlgorithms.QuickSort((int[])arrRev.Clone()); }
         [Benchmark]
-        public void QuickSort_Almost() { SortingAlgorithms.QuickSort(ArrayGenerator.GetPartiallySortedArray(arrSize, 0, arrSize, 0.1f)); }
+        public void QuickSort_Almost() { SortingAlgorithms.QuickSort((int[])arrPart.Clone()); }
         [Benchmark]
-        public void QuickSort_FewUnique() { SortingAlgorithms.QuickSort(ArrayGenerator.GetRandomArray(arrSize, 0, 5)); }
+        public void QuickSort_FewUnique() { SortingAlgorithms.QuickSort((int[])arrFew.Clone()); }
     }
 
     public static class SortingAlgorithms
